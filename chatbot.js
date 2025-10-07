@@ -223,6 +223,31 @@
       const chat=$('rb-chat'), overlay=$('rb-overlay'), launcher=$('rb-launcher'),
             welcome=$('rb-welcome'), bodyEl=$('rb-body'), inputEl=$('rb-input'),
             sendBtn=$('rb-send'), chips=$('rb-chips');
+      // Allow scrolling underlying page when interacting with overlay
+      let lastY, startY, moved;
+      overlay.addEventListener('touchstart', (e) => {
+        if (e.touches.length !== 1) return;
+        startY = lastY = e.touches[0].clientY;
+        moved = false;
+      }, { passive: true });
+      overlay.addEventListener('touchmove', (e) => {
+        if (e.touches.length !== 1) return;
+        const y = e.touches[0].clientY;
+        const delta = lastY - y;
+        if (moved) {
+          e.preventDefault();
+          window.scrollBy(0, delta);
+        } else if (Math.abs(startY - y) > 10) {
+          moved = true;
+          e.preventDefault();
+          window.scrollBy(0, delta);
+        }
+        lastY = y;
+      }, { passive: false });
+      overlay.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        window.scrollBy(0, e.deltaY);
+      }, { passive: false });
       let booted=false, typingRow=null;
       let firstMessageSent = false;
       const makeAIBadge = () => {
