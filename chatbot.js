@@ -2,9 +2,9 @@
   /* ======== CONFIG (edit these) ======== */
   const CONFIG = {
     COMPANY_NAME: 'Legenix Demo Chat',
-    COMPANY_URL: 'https://yourcompany.com',
-    PRIVACY_URL: 'https://yourcompany.com/privacy',
-    BRAND_LINK: 'https://legenix.ai',
+    COMPANY_URL: 'https://legenix.com',
+    PRIVACY_URL: 'https://legenix.com/privacy',
+    BRAND_LINK: 'https://legenix.com',
     INITIAL_MESSAGES: ["Hi! This is a demo version of the chatbot you'll have on your website. Pretend you're a client in need of legal representation and see how it reacts!", "This is Legenix Law Firm's confidential chat. How may we help you today?"],
     WEBHOOK_URL: 'https://n8n.legenix.com/webhook/965364b1-10e6-4044-a839-35f8b054cd5d/chat',
     SEND_PLAIN_TEXT: false
